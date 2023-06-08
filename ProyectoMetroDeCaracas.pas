@@ -2,7 +2,7 @@ program MetrodeCaracas;
 uses crt;
 var nombre, apellido, cedula: string[80];
 x, y, z, linea1, linea2,cantboletos, tipoviaje, subestacion, subestdestino, tipoboleto, money, montofinal: integer;
-	p:boolean;
+p:boolean;
 		
 begin	
 		writeln ('   Te doy la bienvenida al Metro de Caracas.');
@@ -87,6 +87,7 @@ begin
 												readln (y);
 												end;
 														if y = 1 then
+														begin
 														clrscr;
 														writeln ('Por favor, indique la cantidad de boletos que desea comprar.');
 														readln (cantboletos);
@@ -122,75 +123,18 @@ begin
 														readln (z);																												
 														if z <> 0 then
 														begin
-															p := false;
-															WriteLn('Presione 0 para ver las demas opciones');																											
-															end
-															else if (z = 0) then 
-															begin
-															p := true;
-															writeln ('     _____________________________________________________________________');
-															writeln ('    |                 |                    |                              |');
-															writeln ('    | 5) MultiAbono   |      Naranja       |      10 viajes en metro      |');
-															writeln ('    |_________________|____________________|______________________________|');
-															writeln ('    |                 |                    |                              |');
-															writeln ('    | 6) MultiAbono   |      Naranja       |     10 viajes en metro       |');
-															writeln ('    |    integrado    |                    |     10 viajes en metrobus    |');
-															writeln ('    |_________________|____________________|______________________________|');
-															writeln ('    |                 |                    |                              |');
-															writeln ('    | 7) Estudiantil  |        Azul        |      10 viajes en metro      |');
-															writeln ('    |      Simple     |                    |                              |');
-															writeln ('    |_________________|____________________|______________________________|');
-															writeln ('    |                 |                    |                              |');
-															writeln ('    | 8) Estudiantil  |        Azul        |     10 viajes en metro       |');
-															writeln ('    |    Integrado    |                    |     20 viajes en metrobus    |');
-															writeln ('    |_________________|____________________|______________________________|');
-															writeln ('    |                 |                    |                              |');
-															writeln ('    |                 |                    |           20 viajes          |');
-															writeln ('    | 9)MetroTarjeta  |        Rojo        |           30 viajes          |');
-															writeln ('    |                 |                    |           40 viajes          |');
-															writeln ('    |_________________|____________________|______________________________|');
-															writeln ('    |                 |                    |                              |');
-															writeln ('    | 10)MetroTarjeta |                    | 20 viajes (Metro y Metrobus) |');
-															writeln ('    |    Integrada    |        Rojo        | 30 viajes (Metro y Metrobus) |');
-															writeln ('    |                 |                    | 40 viajes (Metro y Metrobus) |');
-															writeln ('    |_________________|____________________|______________________________|');
-															writeln ();	
-															writeln ();
-															writeln ('     Seleccione el numero correspondiente al tipo de boleto que desea comprar');	
-															writeln ();													
-															end;
-															until p=true;																
-															readln (tipoboleto);
-															writeln ('El monto total es: $',cantboletos*tipoboleto*10);
-															while (tipoboleto <> 1) and (tipoboleto <> 2) and (tipoboleto <> 3) and (tipoboleto <> 4) and (tipoboleto <> 5) and (tipoboleto <> 6) and (tipoboleto <> 7) and (tipoboleto <> 8) and (tipoboleto <> 9) and (tipoboleto <> 10) do
-																	begin
-																	clrscr;
-																	writeln ('Dato invalido. Intente de nuevo.');
-																	writeln ('');
-																	writeln ('');
-																	writeln ('');
+														p := false;
+														Writeln('Presione 0 para ver las demas opciones');																											
+														end
+														else if (z = 0) then 
+														begin
+														p := true;
 																	writeln ('     _____________________________________________________________________');
 																	writeln ('    |                 |                    |                              |');
-																	writeln ('    |    Boletos      |       Color        |          Cobertura           |');
+																	writeln ('    | 5) MultiAbono   |      Naranja       |      10 viajes en metro      |');
 																	writeln ('    |_________________|____________________|______________________________|');
 																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 1)  Simple      |     Amarillo       |      1 viaje en metro        |');
-																	writeln ('    |_________________|____________________|______________________________|');
-																	writeln ('    |                 |                    |      1 viaje en metro        |');
-																	writeln ('    | 2) Integrado    |     Amarillo       |      1 viaje en metrobus     |');
-																	writeln ('    |_________________|____________________|______________________________|');
-																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 3)Ida y vuelta  |     Amarillo       |      2 viajes en metro       |');
-																	writeln ('    |_________________|____________________|______________________________|');
-																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 4)Ida y vuelta  |     Amarillo       |     2 viajes en metro        |');
-																	writeln ('    |   integrado     |                    |     2 viajes en metrobus     |');
-																	writeln ('    |_________________|____________________|______________________________|');
-																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 5) MultiAbono   |        Verde       |      10 viajes en metro      |');
-																	writeln ('    |_________________|____________________|______________________________|');
-																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 6) MultiAbono   |        Verde       |     10 viajes en metro       |');
+																	writeln ('    | 6) MultiAbono   |      Naranja       |     10 viajes en metro       |');
 																	writeln ('    |    integrado    |                    |     10 viajes en metrobus    |');
 																	writeln ('    |_________________|____________________|______________________________|');
 																	writeln ('    |                 |                    |                              |');
@@ -211,31 +155,91 @@ begin
 																	writeln ('    |    Integrada    |        Rojo        | 30 viajes (Metro y Metrobus) |');
 																	writeln ('    |                 |                    | 40 viajes (Metro y Metrobus) |');
 																	writeln ('    |_________________|____________________|______________________________|');
+																	writeln ();	
 																	writeln ();
+																	writeln ('     Seleccione el numero correspondiente al tipo de boleto que desea comprar');	
+																	writeln ();													
+																	end;
+																	until p=true;																
 																	readln (tipoboleto);
 																	writeln ('El monto total es: $',cantboletos*tipoboleto*10);
-																	end;
-																			clrscr;
-																			writeln ('');
-																			writeln ('El monto total es: $',cantboletos*tipoboleto*10);
-																			writeln ('');
-																			writeln ('Por favor, describa el tipo de viaje que desea realizar.');
-																			writeln ('');
-																			writeln ('OPCION 01: Viaje en metro.');
-																			writeln ('OPCION 02: Viaje en metrobus.');
-																			readln (tipoviaje);		
-																										while (tipoviaje <> 1) and (tipoviaje <> 2) do
-																										begin
-																										clrscr;
-																										writeln ('Dato invalido. Intente de nuevo.');
-																										writeln ('');
-																										writeln ('');
-																										writeln ('Por favor, describa el tipo de viaje que desea realizar.');
-																										writeln ('');
-																										writeln ('OPCION 01: Viaje en metro.');
-																										writeln ('OPCION 02: Viaje en metrobus.');
-																										readln (tipoviaje);																												
-																										end;																																			
+																				while (tipoboleto <> 0) and (tipoboleto <> 1) and (tipoboleto <> 2) and (tipoboleto <> 3) and (tipoboleto <> 4) and (tipoboleto <> 5) and (tipoboleto <> 6) and (tipoboleto <> 7) and (tipoboleto <> 8) and (tipoboleto <> 9) and (tipoboleto <> 10) do
+																						begin
+																						clrscr;
+																						writeln ('Dato invalido. Intente de nuevo.');
+																						writeln ('');
+																						writeln ('');
+																						writeln ('');
+																						writeln ('     _____________________________________________________________________');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    |    Boletos      |       Color        |          Cobertura           |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 1)  Simple      |     Amarillo       |      1 viaje en metro        |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |      1 viaje en metro        |');
+																						writeln ('    | 2) Integrado    |     Amarillo       |      1 viaje en metrobus     |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 3)Ida y vuelta  |     Amarillo       |      2 viajes en metro       |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 4)Ida y vuelta  |     Amarillo       |     2 viajes en metro        |');
+																						writeln ('    |   integrado     |                    |     2 viajes en metrobus     |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 5) MultiAbono   |        Verde       |      10 viajes en metro      |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 6) MultiAbono   |        Verde       |     10 viajes en metro       |');
+																						writeln ('    |    integrado    |                    |     10 viajes en metrobus    |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 7) Estudiantil  |        Azul        |      10 viajes en metro      |');
+																						writeln ('    |      Simple     |                    |                              |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 8) Estudiantil  |        Azul        |     10 viajes en metro       |');
+																						writeln ('    |    Integrado    |                    |     20 viajes en metrobus    |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    |                 |                    |           20 viajes          |');
+																						writeln ('    | 9)MetroTarjeta  |        Rojo        |           30 viajes          |');
+																						writeln ('    |                 |                    |           40 viajes          |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ('    |                 |                    |                              |');
+																						writeln ('    | 10)MetroTarjeta |                    | 20 viajes (Metro y Metrobus) |');
+																						writeln ('    |    Integrada    |        Rojo        | 30 viajes (Metro y Metrobus) |');
+																						writeln ('    |                 |                    | 40 viajes (Metro y Metrobus) |');
+																						writeln ('    |_________________|____________________|______________________________|');
+																						writeln ();
+																						readln (tipoboleto);
+																						writeln ('El boleto seleccionado es: ',tipoboleto);
+																						writeln ();
+																						writeln ('El monto total es: $',cantboletos*tipoboleto+20);
+																					
+																						end;
+																								clrscr;
+																								writeln ('');
+																								writeln ('El monto total es: $',cantboletos*tipoboleto*10);
+																								writeln ('');
+																								writeln ('Por favor, describa el tipo de viaje que desea realizar.');
+																								writeln ('');
+																								writeln ('OPCION 01: Viaje en metro.');
+																								writeln ('OPCION 02: Viaje en metrobus.');
+																								readln (tipoviaje);		
+																												while (tipoviaje <> 1) and (tipoviaje <> 2) do
+																												begin
+																												clrscr;
+																												writeln ('Dato invalido. Intente de nuevo.');
+																												writeln ('');
+																												writeln ('');
+																												writeln ('Por favor, describa el tipo de viaje que desea realizar.');
+																												writeln ('');
+																												writeln ('OPCION 01: Viaje en metro.');
+																												writeln ('OPCION 02: Viaje en metrobus.');
+																												readln (tipoviaje);																												
+																												end;																																			
 																				case tipoviaje of
 																					1: begin
 																					writeln ('El monto total es: $',cantboletos*tipoboleto*10);
@@ -306,6 +310,77 @@ begin
 																					clrscr;
 																					writeln ('La linea que seleccionada es: ',linea1);
 																					end;
+																					while (linea1 <> 1) and (linea1 <> 2) and (linea1 <> 4) and (linea1 <> 3) and (linea1 <> 4) and (linea1 <> 5) and (linea1 <> 6) and (linea1 <> 7) and (linea1 <> 8) do
+																					begin
+																					writeln ('Dato invalido.');
+																					writeln ('');
+																					writeln ('Por favor seleccione la linea en la que desea viajar');
+																					writeln ('');
+																					writeln ('');
+																					writeln ('');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 1|_______________________________________________________________________________________ ');
+																					writeln ('    | - Propatria                   | - Parque Carabobo             | - Altamira                    |');          
+																					writeln ('    | - Perez Bonalde               | - Bellas Artes                | - Miranda                     |');
+																					writeln ('    | - Plaza Zucre                 | - Colegio de Ingenieros       | - Los Dos Caminos             |');
+																					writeln ('    | - Gato Negro                  | - Plaza Venezuela             | - Los Cortijos                |');
+																					writeln ('    | - Agua Salud                  | - Sabana Grande               | - La California               |');
+																					writeln ('    | - Cabo Amarillo               | - Chacaito                    | - Petare                      |');
+																					writeln ('    | - Capitolio                   | - Chacao                      | - Palo Verde                  |');
+																					writeln ('    | - La Hoyada                   |                               |                               |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');
+																					writeln ('     _______');																				
+																					writeln ('    |LINEA 2|_______________________________________________________________________________________ ');
+																					writeln ('    | - El silencio                 | - La Paz                      | - Mamera                      |');          
+																					writeln ('    | - Capuchinos                  | - La Yaguara                  | - Caricuao                    |');
+																					writeln ('    | - Maternidad                  | - Carapita                    | - Zoologico                   |');
+																					writeln ('    | - Artiguas                    | - Antimano                    | - Luis Pineda / Las adjuntas  |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 3|_______________________________________________________________________________________ ');
+																					writeln ('    | - Plaza Venezuela             | - La Bandera                  | - Coche                       |');          
+																					writeln ('    | - Ciudad Universitaria        | - El Valle                    | - Mercado                     |');
+																					writeln ('    | - Los Simbolos                | - Los Jardines                | - La Rinconada                |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');
+																					writeln ('    |                          Presione 0 para ir a la siguiente pagina.                            |');
+														                            writeln ('    |_______________________________________________________________________________________________|');		
+																					readln (linea1);
+																					if linea1 = 0 then
+																					begin
+																					writeln ('     _______');
+																					writeln ('    |LINEA 4|_______________________________________________________________________________________ ');
+																					writeln ('    | - Zona Rental                 | - Materniadad                 | - Antimano                    |');          
+																					writeln ('    | - Parque Central              | - Artigas                     | - Mamera                      |');
+																					writeln ('    | - Nuevo Circo                 | - La Paz                      | - Luis Pineda / Las adjuntas  |');
+																					writeln ('    | - Teatros                     | - La Yaguara                  |                               |');
+																					writeln ('    | - Capuchino                   | - Carapita                    |                               |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');
+																					writeln ('    |LINEA 5|_______________________________________________________________________________________ ');
+																					writeln ('    | - Bello Monte                 | - Bello Campo                 | - Boleita                     |');          
+																					writeln ('    | - Las Mercedes                | - Hugo Chavez                 | - El Marquez                  |');
+																					writeln ('    | - Parque Simon Bolivar        | - Montecristo                 | - Warairarepano               |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 6|_______________________________________________________');
+																					writeln ('    | - Zoologico                   | - La Rinconada                |'); 
+																					writeln ('    |_______________________________|_______________________________|');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 7|_______________________________________________________________________________________ ');
+																					writeln ('    | - Las Flores                  | - El Cristo                   | - Roosevelt                   |');          
+																					writeln ('    | - Panteon                     | - Roca Tarpeya                | - La Bandera                  |');
+																					writeln ('    | - Socorro                     | - Presidente Medina           | - Los Ilustres                |');
+																					writeln ('    | - La Hoyada                   | - INCES                       |                               |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');
+																					writeln ('     ___________');
+																					writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
+																					writeln ('    | - Petare 2                    | - 5 de Julio                  | - Warairarepano               |');          
+																					writeln ('    | - 19 de Abril                 | - 24 de Julio                 |                               |');
+																					writeln ('    |_______________________________|_______________________________|_______________________________|');																			writeln ();
+																					readln (linea1);
+																					clrscr;
+																					writeln ('La linea que seleccionada es: ',linea1);
+																					end;
+																					end;
 																					if linea1 = 1 then
 																					begin
 																				    writeln ();
@@ -342,13 +417,11 @@ begin
 																					writeln ('    | -07: Capitolio                | -15: Chacao                  | -22: Palo Verde                  |');
 																					writeln ('    | -08: La Hoyada                |                              |                                  |');
 																					writeln ('    |_______________________________|______________________________|__________________________________|');
-																					
 																					writeln ();
 																					readln (subestdestino);
 																					writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																					writeln ();
 																							clrscr;
-																					
 																							textcolor(LightMagenta);
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
@@ -362,13 +435,58 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
-																							
-																					end;
-																						if linea1 = 2 then
-																						begin
-																						writeln ();
-																						writeln ('Por favor, seleccione la sub estacion de salida.');
-																						writeln ();
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																									if z = 1 then
+																									begin
+																									writeln ();
+																									writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																									writeln ();
+																									writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																									exit;
+																									end;
+																									if z = 0 then
+																									begin
+																									clrscr;
+																									writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																									writeln ();
+																									writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																									readln (money);
+																									writeln ();
+																									montofinal:=cantboletos*tipoboleto*10
+																									end;
+																									if montofinal - money < 0 then
+																									begin
+																									writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																									writeln ('Su vuelto es: $',montofinal-money);
+																									end;
+																									while montofinal - money > 0 do
+																									begin
+																									writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																									readln (money);
+																									end;
+																									if montofinal - money = 0 then
+																									begin
+																									writeln ('Hemos recibido su pago.');
+																									end;	
+																									clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ('________________________________________________________');
+																							     	writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							    	writeln ('|                                                       |');
+																									writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																									writeln ('| OPCION 02: VER SISTEMA.                               |');
+																								    writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																									writeln ('|_______________________________________________________|');							
+																									end;
+																					if linea1 = 2 then
+																					begin
+																					writeln ();
+																					writeln ('Por favor, seleccione la sub estacion de salida.');
+																					writeln ();
 																					writeln ('     _______');	
 																					writeln ('    |LINEA 2|________________________________________________________________________________________________ ');
 																					writeln ('    | -01: El silencio                 | -05: La Paz                      | -09:  Mamera                     |');          
@@ -409,7 +527,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
-																					end;
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																									if z = 1 then
+																									begin
+																									writeln ();
+																									writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																									writeln ();
+																									writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																									exit;
+																									end;
+																									if z = 0 then
+																									begin
+																									clrscr;
+																									writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																									writeln ();
+																									writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																									readln (money);
+																									writeln ();
+																									montofinal:=cantboletos*tipoboleto*10
+																									end;
+																									if montofinal - money < 0 then
+																									begin
+																									writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																									writeln ('Su vuelto es: $',montofinal-money);
+																									end;
+																									while montofinal - money > 0 do
+																									begin
+																									writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																									readln (money);
+																									end;
+																									if montofinal - money = 0 then
+																									begin
+																									writeln ('Hemos recibido su pago.');
+																									end;	
+																									clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ('________________________________________________________');
+																									writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																									writeln ('|                                                       |');
+																									writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																									writeln ('| OPCION 02: VER SISTEMA.                               |');
+																								    writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																									writeln ('|_______________________________________________________|');							
+																									end;
 																							if linea1 = 3 then
 																							begin
 																							writeln ();
@@ -455,6 +619,52 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																							if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																						    begin
+																						    writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																							while montofinal - money > 0 do
+																							begin
+																							writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																					    	if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																						    end;	
+																						    clrscr;
+																						    writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																					    	writeln ('________________________________________________________');
+																							writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																						    writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																							writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																							writeln ('|_______________________________________________________|');							
 																							end;
 																							if linea1 = 4 then
 																							begin
@@ -504,6 +714,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');							
 																							end;
 																							if linea1 = 5 then
 																							begin
@@ -551,7 +808,55 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: ·$',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
 																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');							
+																							end;						
+																							
 																							if linea1 = 6 then
 																							begin
 																							writeln ();
@@ -594,6 +899,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');											
 																							end;
 																							if linea1 = 7 then
 																							begin
@@ -641,6 +993,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																						    writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');							
 																							end;
 																							if linea1 = 8 then
 																							begin
@@ -684,6 +1083,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');							
 																							end;
 																							end;
 																							2: begin
@@ -811,6 +1257,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
 																							end;
 																						if linea2 = 2 then
 																						begin
@@ -859,7 +1352,54 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
-																						end;
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
+																							end;
 																							if linea2 = 3 then
 																							begin
 																							writeln ();
@@ -905,6 +1445,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
 																							end;
 																							if linea2 = 4 then
 																							begin
@@ -953,6 +1540,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
 																							end;
 																							if linea2 = 5 then
 																							begin
@@ -999,6 +1633,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																						    writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
 																							end;
 																							if linea2 = 6 then
 																							begin
@@ -1041,6 +1722,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
 																							end;
 																							if linea2 = 7 then
 																							begin
@@ -1088,6 +1816,53 @@ begin
 																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
 																							end;
 																							if linea2 = 8 then
 																							begin
@@ -1126,17 +1901,60 @@ begin
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Tickets disponibles: ',cantboletos);     
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
-																							end;  
-end;	
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    writeln ('________________________________________________________');
+																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
+																							writeln ('|                                                       |');
+																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
+																							writeln ('| OPCION 02: VER SISTEMA.                               |');
+																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
+																					    	writeln ('|_______________________________________________________|');														
+																							end;
 end;
 end;
 end;
-
-
+end;
+end;
 end.
-
-
-
