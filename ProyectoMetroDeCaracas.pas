@@ -2,12 +2,13 @@ program MetrodeCaracas;
 uses crt;
 var nombre, apellido, cedula: string[80];
 	x, y, z, linea1, linea2,cantboletos, tipoviaje, subestacion, subestdestino, tipoboleto: integer;
+	p:boolean;
 		
 begin	
 		writeln ('   Te doy la bienvenida al Metro de Caracas.');
 		writeln ('       ¿Desea adquirir algun boleto?');
-		writeln ('             OPCION 01: SI');
-		writeln ('             OPCION 02: NO');
+		writeln ('             OPCION 1: SI');
+		writeln ('             OPCION 2: NO');
 		readln (x); 
 				while (x <> 1) and (x <> 2) do
 				begin
@@ -15,8 +16,8 @@ begin
 				writeln ('Dato invalido. Intente de nuevo.');
 				writeln ('   Te doy la bienvenida al Metro de Caracas.');
 				writeln ('       ¿Desea adquirir algun boleto?');
-				writeln ('             OPCION 01: SI');
-				writeln ('             OPCION 02: NO');
+				writeln ('             OPCION 1: SI');
+				writeln ('             OPCION 2: NO');
 				readln (x); 
 				end;
 					case x of
@@ -28,11 +29,11 @@ begin
 							1: begin
 							clrscr;
 							writeln ('Para proceder con su cotizacion, le vamos a pedir que nos otorgue los siguientes datos.');
-							writeln ('         NOMBRE:');
+							writeln ('    NOMBRE:');
 							readln (nombre);
-							writeln ('         APELLIDO:');
+							writeln ('    APELLIDO:');
 							readln (apellido);
-							writeln ('         CEDULA DE IDENTIDAD.');
+							writeln ('    CEDULA DE IDENTIDAD:');
 							readln (cedula);
 							clrscr;
 							writeln ('Para proseguir con su cotizacion, por favor, confirmar la validacion de sus datos.');
@@ -90,12 +91,13 @@ begin
 														writeln ('Por favor, indique la cantidad de boletos que desea comprar.');
 														readln (cantboletos);
 														writeln ('');
-														clrscr;
-														writeln ('     ¡Genial! Por favor, indique el tipo de boleto que desea adquirir');
-														writeln ('segun las opciones que se mostraran a continuacion.');
+														clrscr;	
+														writeln ('');
+														writeln ('');													
+														writeln ('        Genial! Por favor, chequee los tipos de boleto disponibles');
 														writeln ('');
 														writeln ('');
-														writeln ('');
+														writeln ('');														
 														writeln ('     _____________________________________________________________________');
 														writeln ('    |                 |                    |                              |');
 														writeln ('    |    Boletos      |       Color        |          Cobertura           |');
@@ -113,42 +115,54 @@ begin
 														writeln ('    | 4)Ida y vuelta  |     Amarillo       |     2 viajes en metro        |');
 														writeln ('    |   integrado     |                    |     2 viajes en metrobus     |');
 														writeln ('    |_________________|____________________|______________________________|');
-														writeln ('    | Presione 0 si desea elegir sus boletos de la siguiente pagina.      |');
+														writeln ('    |               Presione 0 para ver las demas opciones.               |');
 														writeln ('    |_____________________________________________________________________|');
-														readln (tipoboleto);
-														writeln ('El monto total es: $',cantboletos*tipoviaje+20);
-														if tipoboleto = 0 then
+														p := true;
+														repeat
+														readln (z);																												
+														if z <> 0 then
 														begin
-														writeln ('     _____________________________________________________________________');
-														writeln ('    |                 |                    |                              |');
-														writeln ('    | 5) MultiAbono   |      Naranja       |      10 viajes en metro      |');
-														writeln ('    |_________________|____________________|______________________________|');
-														writeln ('    |                 |                    |                              |');
-														writeln ('    | 6) MultiAbono   |      Naranja       |     10 viajes en metro       |');
-														writeln ('    |    integrado    |                    |     10 viajes en metrobus    |');
-														writeln ('    |_________________|____________________|______________________________|');
-														writeln ('    |                 |                    |                              |');
-														writeln ('    | 7) Estudiantil  |        Azul        |      10 viajes en metro      |');
-														writeln ('    |      Simple     |                    |                              |');
-														writeln ('    |_________________|____________________|______________________________|');
-														writeln ('    |                 |                    |                              |');
-														writeln ('    | 8) Estudiantil  |        Azul        |     10 viajes en metro       |');
-														writeln ('    |    Integrado    |                    |     20 viajes en metrobus    |');
-														writeln ('    |_________________|____________________|______________________________|');
-														writeln ('    |                 |                    |                              |');
-														writeln ('    |                 |                    |           20 viajes          |');
-														writeln ('    | 9)MetroTarjeta  |        Rojo        |           30 viajes          |');
-														writeln ('    |                 |                    |           40 viajes          |');
-														writeln ('    |_________________|____________________|______________________________|');
-														writeln ('    |                 |                    |                              |');
-														writeln ('    | 10)MetroTarjeta |                    | 20 viajes (Metro y Metrobus) |');
-														writeln ('    |    Integrada    |        Rojo        | 30 viajes (Metro y Metrobus) |');
-														writeln ('    |                 |                    | 40 viajes (Metro y Metrobus) |');
-														writeln ('    |_________________|____________________|______________________________|');
-														writeln ();
-														readln (tipoboleto);
-														writeln ('El monto total es: $',cantboletos*tipoviaje+20);
-													while (tipoboleto <> 1) and (tipoboleto <> 2) and (tipoboleto <> 3) and (tipoboleto <> 4) and (tipoboleto <> 5) and (tipoboleto <> 6) and (tipoboleto <> 7) and (tipoboleto <> 8) and (tipoboleto <> 9) and (tipoboleto <> 10) do 
+															p := false;
+															WriteLn('Presione 0 para ver las demas opciones');																											
+															end
+															else if (z = 0) then 
+															begin
+															p := true;
+															writeln ('     _____________________________________________________________________');
+															writeln ('    |                 |                    |                              |');
+															writeln ('    | 5) MultiAbono   |      Naranja       |      10 viajes en metro      |');
+															writeln ('    |_________________|____________________|______________________________|');
+															writeln ('    |                 |                    |                              |');
+															writeln ('    | 6) MultiAbono   |      Naranja       |     10 viajes en metro       |');
+															writeln ('    |    integrado    |                    |     10 viajes en metrobus    |');
+															writeln ('    |_________________|____________________|______________________________|');
+															writeln ('    |                 |                    |                              |');
+															writeln ('    | 7) Estudiantil  |        Azul        |      10 viajes en metro      |');
+															writeln ('    |      Simple     |                    |                              |');
+															writeln ('    |_________________|____________________|______________________________|');
+															writeln ('    |                 |                    |                              |');
+															writeln ('    | 8) Estudiantil  |        Azul        |     10 viajes en metro       |');
+															writeln ('    |    Integrado    |                    |     20 viajes en metrobus    |');
+															writeln ('    |_________________|____________________|______________________________|');
+															writeln ('    |                 |                    |                              |');
+															writeln ('    |                 |                    |           20 viajes          |');
+															writeln ('    | 9)MetroTarjeta  |        Rojo        |           30 viajes          |');
+															writeln ('    |                 |                    |           40 viajes          |');
+															writeln ('    |_________________|____________________|______________________________|');
+															writeln ('    |                 |                    |                              |');
+															writeln ('    | 10)MetroTarjeta |                    | 20 viajes (Metro y Metrobus) |');
+															writeln ('    |    Integrada    |        Rojo        | 30 viajes (Metro y Metrobus) |');
+															writeln ('    |                 |                    | 40 viajes (Metro y Metrobus) |');
+															writeln ('    |_________________|____________________|______________________________|');
+															writeln ();	
+															writeln ();
+															writeln ('     Seleccione el numero correspondiente al tipo de boleto que desea comprar');	
+															writeln ();													
+															end;
+															until p=true;																
+															readln (tipoboleto);
+															writeln ('El monto total es: $',cantboletos*tipoboleto*10);
+															while (tipoboleto <> 1) and (tipoboleto <> 2) and (tipoboleto <> 3) and (tipoboleto <> 4) and (tipoboleto <> 5) and (tipoboleto <> 6) and (tipoboleto <> 7) and (tipoboleto <> 8) and (tipoboleto <> 9) and (tipoboleto <> 10) do
 														begin
 														clrscr;
 																	writeln ('Dato invalido. Intente de nuevo.');
@@ -173,10 +187,10 @@ begin
 																	writeln ('    |   integrado     |                    |     2 viajes en metrobus     |');
 																	writeln ('    |_________________|____________________|______________________________|');
 																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 5) MultiAbono   |      Naranja       |      10 viajes en metro      |');
+																	writeln ('    | 5) MultiAbono   |        Verde       |      10 viajes en metro      |');
 																	writeln ('    |_________________|____________________|______________________________|');
 																	writeln ('    |                 |                    |                              |');
-																	writeln ('    | 6) MultiAbono   |      Naranja       |     10 viajes en metro       |');
+																	writeln ('    | 6) MultiAbono   |        Verde       |     10 viajes en metro       |');
 																	writeln ('    |    integrado    |                    |     10 viajes en metrobus    |');
 																	writeln ('    |_________________|____________________|______________________________|');
 																	writeln ('    |                 |                    |                              |');
@@ -199,11 +213,11 @@ begin
 																	writeln ('    |_________________|____________________|______________________________|');
 																	writeln ();
 																	readln (tipoboleto);
-														writeln ('El monto total es: $',cantboletos*tipoviaje+20);
+														writeln ('El monto total es: $',cantboletos*tipoboleto*10);
 																	end;
 																			clrscr;
 																			writeln ('');
-																			writeln ('El monto total es: $',cantboletos*tipoviaje+20);
+																			writeln ('El monto total es: $',cantboletos*tipoboleto*10);
 																			writeln ('');
 																			writeln ('Por favor, describa el tipo de viaje que desea realizar.');
 																			writeln ('');
@@ -224,7 +238,7 @@ begin
 																										end;																																			
 																				case tipoviaje of
 																					1: begin
-																					writeln ('El monto total es: $',cantboletos*tipoviaje+20);
+																					writeln ('El monto total es: $',cantboletos*tipoboleto*10);
 																					writeln ('');
 																					writeln ('Por favor seleccione la linea en la que desea viajar');
 																					writeln ('');
@@ -241,8 +255,7 @@ begin
 																					writeln ('    | - Capitolio                   | - Chacao                      | - Palo Verde                  |');
 																					writeln ('    | - La Hoyada                   |                               |                               |');
 																					writeln ('    |_______________________________|_______________________________|_______________________________|');
-																					writeln ('     _______');
-																				
+																					writeln ('     _______');																				
 																					writeln ('    |LINEA 2|_______________________________________________________________________________________ ');
 																					writeln ('    | - El silencio                 | - La Paz                      | - Mamera                      |');          
 																					writeln ('    | - Capuchinos                  | - La Yaguara                  | - Caricuao                    |');
@@ -280,7 +293,7 @@ begin
 																					writeln ('    | - Socorro                     | - Presidente Medina           | - Los Ilustres                |');
 																					writeln ('    | - La Hoyada                   | - INCES                       |                               |');
 																					writeln ('    |_______________________________|_______________________________|_______________________________|');
-																					writeln ('     _______');
+																					writeln ('     ___________');
 																					writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
 																					writeln ('    | - Petare 2                    | - 5 de Julio                  | - Warairarepano               |');          
 																					writeln ('    | - 19 de Abril                 | - 24 de Julio                 |                               |');
@@ -294,7 +307,8 @@ begin
 																				    writeln ();
 																					writeln ('Por favor, seleccione la sub estacion de salida.');
 																					writeln ();
-																					writeln ('    |LINEA 1|_______________________________________________________________________________________ ');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 1|_________________________________________________________________________________________ ');
 																					writeln ('    | -01: Propatria                | -09: Parque Carabobo         | -16: Altamira                    |');          
 																					writeln ('    | -02: Perez Bonalde            | -10: Bellas Artes            | -17: Miranda                     |');
 																					writeln ('    | -03: Plaza Zucre              | -11: Colegio de Ingenieros   | -18: Los Dos Caminos             |');
@@ -304,7 +318,7 @@ begin
 																					writeln ('    | -07: Capitolio                | -15: Chacao                  | -22: Palo Verde                  |');
 																					writeln ('    | -08: La Hoyada                |                              |                                  |');
 																					writeln ('    |_______________________________|______________________________|__________________________________|');
-																					writeln ('     _______');
+																					
 																					readln (subestacion);
 																					clrscr;
 																					writeln ();
@@ -313,7 +327,8 @@ begin
 																					writeln ();
 																					writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																					writeln ();
-																					writeln ('    |LINEA 1|_______________________________________________________________________________________ ');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 1|_________________________________________________________________________________________ ');
 																					writeln ('    | -01: Propatria                | -09: Parque Carabobo         | -16: Altamira                    |');          
 																					writeln ('    | -02: Perez Bonalde            | -10: Bellas Artes            | -17: Miranda                     |');
 																					writeln ('    | -03: Plaza Zucre              | -11: Colegio de Ingenieros   | -18: Los Dos Caminos             |');
@@ -323,37 +338,41 @@ begin
 																					writeln ('    | -07: Capitolio                | -15: Chacao                  | -22: Palo Verde                  |');
 																					writeln ('    | -08: La Hoyada                |                              |                                  |');
 																					writeln ('    |_______________________________|______________________________|__________________________________|');
-																					writeln ('     _______');
+																					
 																					writeln ();
 																					readln (subestdestino);
 																					writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																					writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje+20);
-																							writeln ('|______________________________________________________|');
+																					
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
+																							
 																					end;
 																						if linea1 = 2 then
 																						begin
 																						writeln ();
 																						writeln ('Por favor, seleccione la sub estacion de salida.');
 																						writeln ();
-																					writeln ('    |LINEA 2|_______________________________________________________________________________________ ');
+																					writeln ('     _______');	
+																					writeln ('    |LINEA 2|________________________________________________________________________________________________ ');
 																					writeln ('    | -01: El silencio                 | -05: La Paz                      | -09:  Mamera                     |');          
 																					writeln ('    | -02: Capuchinos                  | -06: La Yaguara                  | -10: Caricuao                    |');
 																					writeln ('    | -03: Maternidad                  | -07: Carapita                    | -11: Zoologico                   |');
 																					writeln ('    | -04: Artiguas                    | -08: Antimano                    | -12: Luis Pineda / Las adjuntas  |');
-																					writeln ('    |_______________________________|_______________________________|________________________________________|');
-																					writeln ('     _______');
+																					writeln ('    |__________________________________|__________________________________|__________________________________|');
+																					
 																					readln (subestacion);
 																					clrscr;
 																					writeln ();
@@ -362,41 +381,44 @@ begin
 																					writeln ();
 																					writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																					writeln ();
-																					writeln ('    |LINEA 2|_______________________________________________________________________________________ ');
+																					writeln ('     _______');
+																					writeln ('    |LINEA 2|________________________________________________________________________________________________ ');
 																					writeln ('    | -01: El silencio                 | -05: La Paz                      | -09:  Mamera                     |');          
 																					writeln ('    | -02: Capuchinos                  | -06: La Yaguara                  | -10: Caricuao                    |');
 																					writeln ('    | -03: Maternidad                  | -07: Carapita                    | -11: Zoologico                   |');
 																					writeln ('    | -04: Artiguas                    | -08: Antimano                    | -12: Luis Pineda / Las adjuntas  |');
-																					writeln ('    |_______________________________|_______________________________|________________________________________|');
-																					writeln ('     _______');
+																					writeln ('    |__________________________________|__________________________________|__________________________________|');
+																					
 																					readln (subestdestino);
 																					writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																					writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(Magenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																					end;
 																							if linea1 = 3 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 3|_______________________________________________________________________________________ ');
-																							writeln ('    | -01: Plaza Venezuela             | -04: La Bandera                  | -07: Coche                       |');          
-																							writeln ('    | -02: Ciudad Universitaria        | -05: El Valle                    | -08: Mercado                     |');
-																							writeln ('    | -03: Los Simbolos                | -06: Los Jardines                | -09: La Rinconada                |');
-																							writeln ('    |_______________________________|_____________________________________|__________________________________|');
 																							writeln ('     _______');
+																							writeln ('    |LINEA 3|______________________________________________________________________________________________ ');
+																							writeln ('    | -01: Plaza Venezuela             | -04: La Bandera                  | -07: Coche                     |');          
+																							writeln ('    | -02: Ciudad Universitaria        | -05: El Valle                    | -08: Mercado                   |');
+																							writeln ('    | -03: Los Simbolos                | -06: Los Jardines                | -09: La Rinconada              |');
+																							writeln ('    |__________________________________|__________________________________|________________________________|');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -405,36 +427,39 @@ begin
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
-																								writeln ('    |LINEA 3|____________________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 3|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Plaza Venezuela             | -04: La Bandera                  | -07: Coche                       |');          
 																							writeln ('    | -02: Ciudad Universitaria        | -05: El Valle                    | -08: Mercado                     |');
 																							writeln ('    | -03: Los Simbolos                | -06: Los Jardines                | -09: La Rinconada                |');
-																							writeln ('    |_______________________________|_____________________________________|__________________________________|');
-																							writeln ('     _______');
+																							writeln ('    |__________________________________|__________________________________|__________________________________|');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea1 = 4 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 4|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 4|_________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Zona Rental                 | -06: Materniadad                 | -11: Antimano                     |');          
 																							writeln ('    | -02: Parque Central              | -07: Artigas                     | -12: Mamera                       |');
 																							writeln ('    | -03: Nuevo Circo                 | -08: La Paz                      | -13: Luis Pineda / Las adjuntas   |');
@@ -449,43 +474,46 @@ begin
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
-																							writeln ('    |LINEA 4|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 4|_________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Zona Rental                 | -06: Materniadad                 | -11: Antimano                     |');          
 																							writeln ('    | -02: Parque Central              | -07: Artigas                     | -12: Mamera                       |');
 																							writeln ('    | -03: Nuevo Circo                 | -08: La Paz                      | -13: Luis Pineda / Las adjuntas   |');
 																							writeln ('    | -04: Teatros                     | -09: La Yaguara                  |                                   |');
 																							writeln ('    | -05: Capuchino                   | -10: Carapita                    |                                   |');
 																							writeln ('    |__________________________________|__________________________________|___________________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea1 = 5 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 5|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 5|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Bello Monte                 | -04: Bello Campo                 | -07: Boleita                     |');          
 																							writeln ('    | -02: Las Mercedes                | -05: Hugo Chavez                 | -08: El Marquez                  |');
 																							writeln ('    | -03: Parque Simon Bolivar        | -06: Montecristo                 | -09: Warairarepano               |');
 																							writeln ('    |__________________________________|__________________________________|__________________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -495,29 +523,31 @@ begin
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
 																							writeln ();
-																							writeln ('    |LINEA 5|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 5|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Bello Monte                 | -04: Bello Campo                 | -07: Boleita                     |');          
 																							writeln ('    | -02: Las Mercedes                | -05: Hugo Chavez                 | -08: El Marquez                  |');
 																							writeln ('    | -03: Parque Simon Bolivar        | -06: Montecristo                 | -09: Warairarepano               |');
 																							writeln ('    |__________________________________|__________________________________|__________________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea1 = 6 then
 																							begin
@@ -528,7 +558,7 @@ begin
 																							writeln ('    |LINEA 6|________________________________________________________');
 																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
 																							writeln ('    |__________________________________|_____________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -541,25 +571,26 @@ begin
 																							writeln ('    |LINEA 6|________________________________________________________');
 																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
 																							writeln ('    |__________________________________|_____________________________|');
-																							writeln ('     _______');
+																							
 																							writeln();
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea1 = 7 then
 																							begin
@@ -567,13 +598,13 @@ begin
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
 																							writeln ('     _______');
-																							writeln ('    |LINEA 7|_______________________________________________________________________________________ ');
+																							writeln ('    |LINEA 7|_____________________________________________________________________________________________ ');
 																							writeln ('    | -01: Las Flores                  | -05: El Cristo                   | -09: Roosevelt                |');          
 																							writeln ('    | -02: Panteon                     | -06: Roca Tarpeya                | -10: La Bandera               |');
 																							writeln ('    | -03: Socorro                     | -07: Presidente Medina           | -11: Los Ilustres             |');
 																							writeln ('    | -04: La Hoyada                   | -08: INCES                       |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -582,30 +613,31 @@ begin
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
 																							writeln ('     _______');
-																							writeln ('    |LINEA 7|_______________________________________________________________________________________ ');
+																							writeln ('    |LINEA 7|_____________________________________________________________________________________________ ');
 																							writeln ('    | -01: Las Flores                  | -05: El Cristo                   | -09: Roosevelt                |');          
 																							writeln ('    | -02: Panteon                     | -06: Roca Tarpeya                | -10: La Bandera               |');
 																							writeln ('    | -03: Socorro                     | -07: Presidente Medina           | -11: Los Ilustres             |');
 																							writeln ('    | -04: La Hoyada                   | -08: INCES                       |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea1 = 8 then
 																							begin
@@ -613,7 +645,7 @@ begin
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
 																							writeln ('     _______');
-																							writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
+																							writeln ('    |CLABETREN 8|_________________________________________________________________________________________ ');
 																							writeln ('    | -01: Petare 2                    | -03: 5 de Julio                  | -05: Warairarepano            |');          
 																							writeln ('    | -02: 19 de Abril                 | -04: 24 de Julio                 |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
@@ -625,8 +657,8 @@ begin
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
-																							writeln ('     _______');
-																							writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
+																							writeln ('     ___________');
+																							writeln ('    |CLABETREN 8|_________________________________________________________________________________________ ');
 																							writeln ('    | -01: Petare 2                    | -03: 5 de Julio                  | -05: Warairarepano            |');          
 																							writeln ('    | -02: 19 de Abril                 | -04: 24 de Julio                 |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
@@ -636,22 +668,23 @@ begin
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							end;
 																							2: begin
-																							writeln ('El monto total es: $',cantboletos*tipoviaje);
+																							writeln ('El monto total es: $',cantboletos*tipoboleto*10);
 																							writeln ('');
 																							writeln ('Por favor seleccione la linea en la que desea viajar');
 																							writeln ('');
@@ -706,7 +739,7 @@ begin
 																							writeln ('    | - Socorro                     | - Presidente Medina           | - Los Ilustres                |');
 																							writeln ('    | - La Hoyada                   | - INCES                       |                               |');
 																							writeln ('    |_______________________________|_______________________________|_______________________________|');
-																							writeln ('     _______');
+																							writeln ('     ___________');
 																							writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
 																							writeln ('    | - Petare 2                    | - 5 de Julio                  | - Warairarepano               |');          
 																							writeln ('    | - 19 de Abril                 | - 24 de Julio                 |                               |');
@@ -719,7 +752,8 @@ begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 1|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 1|_________________________________________________________________________________________ ');
 																							writeln ('    | -01: Propatria                | -09: Parque Carabobo         | -16: Altamira                    |');          
 																							writeln ('    | -02: Perez Bonalde            | -10: Bellas Artes            | -17: Miranda                     |');
 																							writeln ('    | -03: Plaza Zucre              | -11: Colegio de Ingenieros   | -18: Los Dos Caminos             |');
@@ -729,7 +763,7 @@ begin
 																							writeln ('    | -07: Capitolio                | -15: Chacao                  | -22: Palo Verde                  |');
 																							writeln ('    | -08: La Hoyada                |                              |                                  |');
 																							writeln ('    |_______________________________|______________________________|__________________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -738,7 +772,8 @@ begin
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
-																							writeln ('    |LINEA 1|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 1|_________________________________________________________________________________________ ');
 																							writeln ('    | -01: Propatria                | -09: Parque Carabobo         | -16: Altamira                    |');          
 																							writeln ('    | -02: Perez Bonalde            | -10: Bellas Artes            | -17: Miranda                     |');
 																							writeln ('    | -03: Plaza Zucre              | -11: Colegio de Ingenieros   | -18: Los Dos Caminos             |');
@@ -748,37 +783,39 @@ begin
 																							writeln ('    | -07: Capitolio                | -15: Chacao                  | -22: Palo Verde                  |');
 																							writeln ('    | -08: La Hoyada                |                              |                                  |');
 																							writeln ('    |_______________________________|______________________________|__________________________________|');
-																							writeln ('     _______');
+																							
 																							writeln ();
 																							readln (subestdestino);
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																						if linea2 = 2 then
 																						begin
 																						writeln ();
 																						writeln ('Por favor, seleccione la sub estacion de salida.');
 																						writeln ();
+																						writeln ('     _______');
 																						writeln ('    |LINEA 2|_______________________________________________________________________________________ ');
 																						writeln ('    | -01: El silencio                 | -05: La Paz                      | -09:  Mamera                     |');          
 																						writeln ('    | -02: Capuchinos                  | -06: La Yaguara                  | -10: Caricuao                    |');
 																						writeln ('    | -03: Maternidad                  | -07: Carapita                    | -11: Zoologico                   |');
 																						writeln ('    | -04: Artiguas                    | -08: Antimano                    | -12: Luis Pineda / Las adjuntas  |');
 																						writeln ('    |_______________________________|_______________________________|________________________________________|');
-																						writeln ('     _______');
+																						
 																						readln (subestacion);
 																						clrscr;
 																						writeln ();
@@ -788,41 +825,44 @@ begin
 																						writeln ();
 																						writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																						writeln ();
-																						writeln ('    |LINEA 2|_______________________________________________________________________________________ ');
+																						writeln ('     _______');
+																						writeln ('    |LINEA 2|________________________________________________________________________________________________ ');
 																						writeln ('    | -01: El silencio                 | -05: La Paz                      | -09:  Mamera                     |');          
 																						writeln ('    | -02: Capuchinos                  | -06: La Yaguara                  | -10: Caricuao                    |');
 																						writeln ('    | -03: Maternidad                  | -07: Carapita                    | -11: Zoologico                   |');
 																						writeln ('    | -04: Artiguas                    | -08: Antimano                    | -12: Luis Pineda / Las adjuntas  |');
-																						writeln ('    |_______________________________|_______________________________|________________________________________|');
-																						writeln ('     _______');
+																						writeln ('    |__________________________________|__________________________________|__________________________________|');
+																						
 																						readln (subestdestino);
 																						writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																						writeln ();
 																						clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																						end;
 																							if linea2 = 3 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 3|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 3|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Plaza Venezuela             | -04: La Bandera                  | -07: Coche                       |');          
 																							writeln ('    | -02: Ciudad Universitaria        | -05: El Valle                    | -08: Mercado                     |');
 																							writeln ('    | -03: Los Simbolos                | -06: Los Jardines                | -09: La Rinconada                |');
-																							writeln ('    |_______________________________|_____________________________________|__________________________________|');
-																							writeln ('     _______');
+																							writeln ('    |__________________________________|__________________________________|__________________________________|');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -831,36 +871,39 @@ begin
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
-																							writeln ('    |LINEA 3|____________________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 3|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Plaza Venezuela             | -04: La Bandera                  | -07: Coche                       |');          
 																							writeln ('    | -02: Ciudad Universitaria        | -05: El Valle                    | -08: Mercado                     |');
 																							writeln ('    | -03: Los Simbolos                | -06: Los Jardines                | -09: La Rinconada                |');
-																							writeln ('    |_______________________________|_____________________________________|__________________________________|');
-																							writeln ('     _______');
+																							writeln ('    |__________________________________|__________________________________|__________________________________|');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea2 = 4 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 4|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 4|_________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Zona Rental                 | -06: Materniadad                 | -11: Antimano                     |');          
 																							writeln ('    | -02: Parque Central              | -07: Artigas                     | -12: Mamera                       |');
 																							writeln ('    | -03: Nuevo Circo                 | -08: La Paz                      | -13: Luis Pineda / Las adjuntas   |');
@@ -874,43 +917,46 @@ begin
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
-																							writeln ('    |LINEA 4|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 4|_________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Zona Rental                 | -06: Materniadad                 | -11: Antimano                     |');          
 																							writeln ('    | -02: Parque Central              | -07: Artigas                     | -12: Mamera                       |');
 																							writeln ('    | -03: Nuevo Circo                 | -08: La Paz                      | -13: Luis Pineda / Las adjuntas   |');
 																							writeln ('    | -04: Teatros                     | -09: La Yaguara                  |                                   |');
 																							writeln ('    | -05: Capuchino                   | -10: Carapita                    |                                   |');
 																							writeln ('    |__________________________________|__________________________________|___________________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea2 = 5 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('    |LINEA 5|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 5|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Bello Monte                 | -04: Bello Campo                 | -07: Boleita                     |');          
 																							writeln ('    | -02: Las Mercedes                | -05: Hugo Chavez                 | -08: El Marquez                  |');
 																							writeln ('    | -03: Parque Simon Bolivar        | -06: Montecristo                 | -09: Warairarepano               |');
 																							writeln ('    |__________________________________|__________________________________|__________________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -919,29 +965,31 @@ begin
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
 																							writeln ();
-																							writeln ('    |LINEA 5|_______________________________________________________________________________________ ');
+																							writeln ('     _______');
+																							writeln ('    |LINEA 5|________________________________________________________________________________________________ ');
 																							writeln ('    | -01: Bello Monte                 | -04: Bello Campo                 | -07: Boleita                     |');          
 																							writeln ('    | -02: Las Mercedes                | -05: Hugo Chavez                 | -08: El Marquez                  |');
 																							writeln ('    | -03: Parque Simon Bolivar        | -06: Montecristo                 | -09: Warairarepano               |');
 																							writeln ('    |__________________________________|__________________________________|__________________________________|');
-																							writeln ('     _______');
+																						
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea2 = 6 then
 																							begin
@@ -952,7 +1000,7 @@ begin
 																							writeln ('    |LINEA 6|________________________________________________________');
 																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
 																							writeln ('    |__________________________________|_____________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -964,25 +1012,26 @@ begin
 																							writeln ('    |LINEA 6|________________________________________________________');
 																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
 																							writeln ('    |__________________________________|_____________________________|');
-																							writeln ('     _______');
+																							
 																							writeln();
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea2 = 7 then
 																							begin
@@ -990,13 +1039,13 @@ begin
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
 																							writeln ('     _______');
-																							writeln ('    |LINEA 7|_______________________________________________________________________________________ ');
+																							writeln ('    |LINEA 7|_____________________________________________________________________________________________ ');
 																							writeln ('    | -01: Las Flores                  | -05: El Cristo                   | -09: Roosevelt                |');          
 																							writeln ('    | -02: Panteon                     | -06: Roca Tarpeya                | -10: La Bandera               |');
 																							writeln ('    | -03: Socorro                     | -07: Presidente Medina           | -11: Los Ilustres             |');
 																							writeln ('    | -04: La Hoyada                   | -08: INCES                       |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestacion);
 																							clrscr;
 																							writeln ();
@@ -1005,39 +1054,40 @@ begin
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
 																							writeln ();
 																							writeln ('     _______');
-																							writeln ('    |LINEA 7|_______________________________________________________________________________________ ');
+																							writeln ('    |LINEA 7|_____________________________________________________________________________________________ ');
 																							writeln ('    | -01: Las Flores                  | -05: El Cristo                   | -09: Roosevelt                |');          
 																							writeln ('    | -02: Panteon                     | -06: Roca Tarpeya                | -10: La Bandera               |');
 																							writeln ('    | -03: Socorro                     | -07: Presidente Medina           | -11: Los Ilustres             |');
 																							writeln ('    | -04: La Hoyada                   | -08: INCES                       |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
-																							writeln ('     _______');
+																							
 																							readln (subestdestino);
 																							writeln ();
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total: ',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;
 																							if linea2 = 8 then
 																							begin
 																							writeln ();
 																							writeln ('Por favor, seleccione la sub estacion de salida.');
 																							writeln ();
-																							writeln ('     _______');
-																							writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
-																							writeln ('    | -01: Petare 2                    | -03: 5 de Julio                  | -05: Warairarepano               |');          
+																							writeln ('     ___________');
+																							writeln ('    |CLABETREN 8|_________________________________________________________________________________________ ');
+																							writeln ('    | -01: Petare 2                    | -03: 5 de Julio                  | -05: Warairarepano            |');          
 																							writeln ('    | -02: 19 de Abril                 | -04: 24 de Julio                 |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
 																							writeln ();
@@ -1047,9 +1097,9 @@ begin
 																							writeln ('Usted ha seleccionado la sub estacion de salida: ',subestacion,'.');
 																							writeln ();
 																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
-																							writeln ('     _______');
-																							writeln ('    |CLABETREN 8|_____________________________________________________________________________________ ');
-																							writeln ('    | -01: Petare 2                    | -03: 5 de Julio                  | -05: Warairarepano               |');          
+																							writeln ('     ___________');
+																							writeln ('    |CLABETREN 8|_________________________________________________________________________________________ ');
+																							writeln ('    | -01: Petare 2                    | -03: 5 de Julio                  | -05: Warairarepano            |');          
 																							writeln ('    | -02: 19 de Abril                 | -04: 24 de Julio                 |                               |');
 																							writeln ('    |__________________________________|__________________________________|_______________________________|');
 																							writeln ();
@@ -1057,18 +1107,19 @@ begin
 																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																							writeln ();
 																							clrscr;
-																							writeln ('______________________________________________________');
-																							writeln ('|       DETALLES DE LA COMPRA DE SUS BOLETOS.         |');
-																							writeln ('|                                                     |');
-																							writeln ('| NOMBRE: ',nombre);
-																							writeln ('| APELLIDO: ',apellido);
-																							writeln ('| CEDULA: ',cedula);
-																							writeln ('|                                                     |');
-																							writeln ('| Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('| Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('| Tickets disponibles: ',cantboletos);
-																							writeln ('| Monto total a pagar: $',cantboletos*tipoviaje);
-																							writeln ('|______________________________________________________|');
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',nombre);
+																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
 																							end;  
 end;	
 end;
@@ -1076,6 +1127,7 @@ end;
 end;
 
 
-end;
 end.
+
+
 
