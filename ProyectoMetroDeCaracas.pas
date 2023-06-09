@@ -1,23 +1,29 @@
 program MetrodeCaracas;
 uses crt;
 var nombre, apellido, cedula: string[80];
-x, y, z, linea1, linea2,cantboletos, tipoviaje, subestacion, subestdestino, tipoboleto, money, montofinal: integer;
+x, y, z, linea1, linea2,cantboletos, tipoviaje, subestacion, subestdestino, tipoboleto, money, montofinal, ultmenu, clave: integer;
 p:boolean;
-		
+label 
+		Prueba;
 begin	
+Prueba:
+clrscr;
+		writeln ('');
 		writeln ('   Te doy la bienvenida al Metro de Caracas.');
-		writeln ('       ¿Desea adquirir algun boleto?');
-		writeln ('             OPCION 1: SI');
-		writeln ('             OPCION 2: NO');
+		writeln ('       Desea adquirir algun boleto?');
+		writeln ('');
+		writeln ('        1: SI');
+		writeln ('        2: NO');
 		readln (x); 
 				while (x <> 1) and (x <> 2) do
 				begin
 				clrscr;
 				writeln ('Dato invalido. Intente de nuevo.');
-				writeln ('   Te doy la bienvenida al Metro de Caracas.');
-				writeln ('       ¿Desea adquirir algun boleto?');
-				writeln ('             OPCION 1: SI');
-				writeln ('             OPCION 2: NO');
+				writeln ('');
+				writeln ('       Desea adquirir algun boleto?');
+				writeln ('');
+				writeln ('        1: SI');
+				writeln ('        2: NO');
 				readln (x); 
 				end;
 					case x of
@@ -203,9 +209,9 @@ begin
 																						writeln ('    |    Integrado    |                    |     20 viajes en metrobus    |');
 																						writeln ('    |_________________|____________________|______________________________|');
 																						writeln ('    |                 |                    |                              |');
-																						writeln ('    |                 |                    |           20 viajes          |');
-																						writeln ('    | 9)MetroTarjeta  |        Rojo        |           30 viajes          |');
-																						writeln ('    |                 |                    |           40 viajes          |');
+																						writeln ('    |                 |                    |      20 viajes en metro      |');
+																						writeln ('    | 9)MetroTarjeta  |        Rojo        |      30 viajes en metro      |');
+																						writeln ('    |                 |                    |      40 viajes en metro      |');
 																						writeln ('    |_________________|____________________|______________________________|');
 																						writeln ('    |                 |                    |                              |');
 																						writeln ('    | 10)MetroTarjeta |                    | 20 viajes (Metro y Metrobus) |');
@@ -220,6 +226,8 @@ begin
 																					
 																						end;
 																								clrscr;
+																								if (tipoboleto mod 2 = 0) then
+																								begin
 																								writeln ('');
 																								writeln ('El monto total es: $',cantboletos*tipoboleto*10);
 																								writeln ('');
@@ -239,7 +247,13 @@ begin
 																												writeln ('OPCION 01: Viaje en metro.');
 																												writeln ('OPCION 02: Viaje en metrobus.');
 																												readln (tipoviaje);																												
-																												end;																																			
+																												end;
+																												end
+																							else
+																							begin
+																							tipoviaje:=1;
+																							end;
+																																																										
 																				case tipoviaje of
 																					1: begin
 																					writeln ('El monto total es: $',cantboletos*tipoboleto*10);
@@ -422,13 +436,14 @@ begin
 																					writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
 																					writeln ();
 																							clrscr;
-																							textcolor(LightMagenta);
+																							textcolor(LightMagenta);																							
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -474,14 +489,63 @@ begin
 																									clrscr;
 																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																									writeln ();
-																									writeln ('________________________________________________________');
-																							     	writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							    	writeln ('|                                                       |');
-																									writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																									writeln ('| OPCION 02: VER SISTEMA.                               |');
-																								    writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																									writeln ('|_______________________________________________________|');							
-																									end;
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;																										
+																										
+																											end;
+																										
+																										
+																							
+																										
+																									
+																									
 																					if linea1 = 2 then
 																					begin
 																					writeln ();
@@ -518,9 +582,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -566,13 +631,58 @@ begin
 																									clrscr;
 																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																									writeln ();
-																									writeln ('________________________________________________________');
-																									writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																									writeln ('|                                                       |');
-																									writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																									writeln ('| OPCION 02: VER SISTEMA.                               |');
-																								    writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																									writeln ('|_______________________________________________________|');							
+																									clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;							
 																									end;
 																							if linea1 = 3 then
 																							begin
@@ -610,9 +720,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -658,13 +769,58 @@ begin
 																						    clrscr;
 																						    writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																					    	writeln ('________________________________________________________');
-																							writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																						    writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																							writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																							writeln ('|_______________________________________________________|');							
+																					    	clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;							
 																							end;
 																							if linea1 = 4 then
 																							begin
@@ -705,9 +861,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -754,13 +911,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');							
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;	
 																							end;
 																							if linea1 = 5 then
 																							begin
@@ -799,100 +1001,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
-																							writeln ('     |                                                        |');
-																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
-																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('     | Tickets disponibles: ',cantboletos);
-																							writeln ('     | Monto total: ·$',cantboletos*tipoboleto*10);
-																							writeln ('     |________________________________________________________|');
-																							writeln ();
-																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
-																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
-																							readln (z);
-																						    if z = 1 then
-																							begin
-																							writeln ();
-																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
-																							writeln ();
-																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
-																							exit;
-																							end;
-																							if z = 0 then
-																							begin
-																							clrscr;
-																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
-																							writeln ();
-																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
-																												
-																							readln (money);
-																							writeln ();
-																							montofinal:=cantboletos*tipoboleto*10
-																							end;
-																						    if montofinal - money < 0 then
-																							begin
-																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
-																							writeln ('Su vuelto es: $',montofinal-money);
-																							end;
-																						    while montofinal - money > 0 do
-																							begin
-																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
-																							readln (money);
-																							end;
-																							if montofinal - money = 0 then
-																							begin
-																							writeln ('Hemos recibido su pago.');
-																							end;	
-																							clrscr;
-																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
-																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');							
-																							end;						
-																							
-																							if linea1 = 6 then
-																							begin
-																							writeln ();
-																							writeln ('Por favor, seleccione la sub estacion de salida.');
-																							writeln ();
-																							writeln ('     _______');
-																							writeln ('    |LINEA 6|________________________________________________________');
-																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
-																							writeln ('    |__________________________________|_____________________________|');
-																							
-																							readln (subestacion);
-																							clrscr;
-																							writeln ();
-																							writeln ('Usted ha seleccionado la sub estacion de salida: ',subestacion);
-																							writeln ();
-																							writeln ();
-																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
-																							writeln ();
-																							writeln ('     _______');
-																							writeln ('    |LINEA 6|________________________________________________________');
-																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
-																							writeln ('    |__________________________________|_____________________________|');
-																							
-																							writeln();
-																							readln (subestdestino);
-																							writeln ();
-																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
-																							writeln ();
-																							clrscr;
-																							textcolor(LightMagenta);
-																							writeln ('      ________________________________________________________');
-																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
-																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
-																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -939,13 +1051,195 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');											
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;							
+																							end;						
+																							
+																							if linea1 = 6 then
+																							begin
+																							writeln ();
+																							writeln ('Por favor, seleccione la sub estacion de salida.');
+																							writeln ();
+																							writeln ('     _______');
+																							writeln ('    |LINEA 6|________________________________________________________');
+																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
+																							writeln ('    |__________________________________|_____________________________|');
+																							
+																							readln (subestacion);
+																							clrscr;
+																							writeln ();
+																							writeln ('Usted ha seleccionado la sub estacion de salida: ',subestacion);
+																							writeln ();
+																							writeln ();
+																							writeln ('Ahora, por favor seleccione la sub estacion destino.');
+																							writeln ();
+																							writeln ('     _______');
+																							writeln ('    |LINEA 6|________________________________________________________');
+																							writeln ('    | -01: Zoologico                   | -02: La Rinconada           |'); 
+																							writeln ('    |__________________________________|_____________________________|');
+																							
+																							writeln();
+																							readln (subestdestino);
+																							writeln ();
+																							writeln ('Usted ha seleccionado la sub estacion de destino: ',subestdestino,'.');
+																							writeln ();
+																							clrscr;
+																							textcolor(LightMagenta);
+																							writeln ('      ________________________________________________________');
+																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
+																							writeln ('     |                                                        |');
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
+																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
+																							writeln ('     |                                                        |');
+																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
+																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
+																							writeln ('     | Tickets disponibles: ',cantboletos);
+																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
+																							writeln ('     |________________________________________________________|');
+																							writeln ();
+																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
+																							writeln ('      Presione 1 si desea cancelar su compra.                   ');
+																							readln (z);
+																						    if z = 1 then
+																							begin
+																							writeln ();
+																							writeln ('Gracias por visitar el Metro de Caracas, vuelva pronto.');
+																							writeln ();
+																							writeln ('Nota: se necesitan 20 segundos de valor para hacer lo que sea. Hasta luego!!');
+																							exit;
+																							end;
+																							if z = 0 then
+																							begin
+																							clrscr;
+																							writeln ('El monto total a pagar es: $',cantboletos*tipoboleto*10);
+																							writeln ();
+																							writeln ('Por favor, introduzca la cantidad de dinero que ingresara en el sistema para comprar sus boletos.');
+																												
+																							readln (money);
+																							writeln ();
+																							montofinal:=cantboletos*tipoboleto*10
+																							end;
+																						    if montofinal - money < 0 then
+																							begin
+																							writeln ('Usted ha ingresado una cantidad superior a la expresada en el sistema.');
+																							writeln ('Su vuelto es: $',montofinal-money);
+																							end;
+																						    while montofinal - money > 0 do
+																							begin
+																						    writeln  ('Usted ha ingresado un monto menor al expresado en sistema, por favor, ingrese el monto adecuado.');
+																							readln (money);
+																							end;
+																							if montofinal - money = 0 then
+																							begin
+																							writeln ('Hemos recibido su pago.');
+																							end;	
+																							clrscr;
+																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																						    writeln ();
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;											
 																							end;
 																							if linea1 = 7 then
 																							begin
@@ -984,14 +1278,15 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
 																							writeln ('     | Tickets disponibles: ',cantboletos);
-																							writeln ('     | Monto total: ',cantboletos*tipoboleto*10);
+																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
 																						    writeln ();
 																							writeln ('      Presione 0 si esta seguro de su compra.                   ');
@@ -1033,13 +1328,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');							
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;							
 																							end;
 																							if linea1 = 8 then
 																							begin
@@ -1074,9 +1414,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METRO');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1123,15 +1464,62 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');							
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;								
 																							end;
 																							end;
+																							
+																							
 																							2: begin
 																							writeln ('El monto total es: $',cantboletos*tipoboleto*10);
 																							writeln ('');
@@ -1248,9 +1636,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1297,13 +1686,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;														
 																							end;
 																						if linea2 = 2 then
 																						begin
@@ -1343,9 +1777,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1392,13 +1827,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;															
 																							end;
 																							if linea2 = 3 then
 																							begin
@@ -1436,9 +1916,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1485,13 +1966,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;															
 																							end;
 																							if linea2 = 4 then
 																							begin
@@ -1531,9 +2057,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1580,13 +2107,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;															
 																							end;
 																							if linea2 = 5 then
 																							begin
@@ -1624,9 +2196,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1673,13 +2246,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;															
 																							end;
 																							if linea2 = 6 then
 																							begin
@@ -1713,9 +2331,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1762,13 +2381,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;															
 																							end;
 																							if linea2 = 7 then
 																							begin
@@ -1807,9 +2471,10 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
@@ -1856,13 +2521,58 @@ begin
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
 																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;															
 																							end;
 																							if linea2 = 8 then
 																							begin
@@ -1895,13 +2605,14 @@ begin
 																							writeln ('      ________________________________________________________');
 																							writeln ('     |       DETALLES DE LA COMPRA DE SUS BOLETOS.            |');
 																							writeln ('     |                                                        |');
-																							writeln ('     | NOMBRE: ',nombre);
-																							writeln ('     | APELLIDO: ',apellido);
+																							writeln ('     | NOMBRE: ',upcase(nombre));
+																							writeln ('     | APELLIDO: ',upcase(apellido));
 																							writeln ('     | CEDULA: ',cedula);
+																							writeln ('     | TIPO DE VIAJE: METROBUS');
 																							writeln ('     |                                                        |');
 																							writeln ('     | Sub estacion de salida seleccionada: ',subestacion);
 																							writeln ('     | Sub estacion de destino seleccionada: ',subestdestino);
-																							writeln ('     | Tickets disponibles: ',cantboletos);     
+																							writeln ('     | Tickets disponibles: ',cantboletos);
 																							writeln ('     | Monto total: $',cantboletos*tipoboleto*10);
 																							writeln ('     |________________________________________________________|');
 																							writeln ();
@@ -1943,18 +2654,64 @@ begin
 																							end;	
 																							clrscr;
 																							writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
-																						    writeln ();
-																						    writeln ('________________________________________________________');
-																						    writeln ('|    Por favor, elija la opcion de sun preferencia.     |');
-																							writeln ('|                                                       |');
-																							writeln ('| OPCION 01: SALIR DEL SISTEMA.                         |');
-																							writeln ('| OPCION 02: VER SISTEMA.                               |');
-																					     	writeln ('| OPCION 03. UTILIZAR LOS BOLETOS.                      |');	
-																					    	writeln ('|_______________________________________________________|');														
+																							writeln ();
+																						    clrscr;
+																									writeln ('Usted ha cancelado el monto final de su factura exitosamente.');
+																									writeln ();
+																									writeln ();
+																									writeln ('      _____________________________________');
+																									writeln ('     |       Que desea hacer ahora?        |');
+																									writeln ('     |                                     |');
+																									writeln ('     |      1: COMPRAR MAS BOLETOS         |');
+																									writeln ('     |      2: VER SISTEMA (SOLO ADMIN)    |');
+																									writeln ('     |      3: SALIR                       |');
+																									writeln ('     |_____________________________________|');	
+																									readln (ultmenu);	
+																									case ultmenu of
+																									 
+																										1:
+																										begin
+																										writeln ('Enseguida volvera al menu de compras');
+																										goto Prueba;
+																										end;
+																										2:
+																										begin																										
+																										writeln ('Ingrese la clave');
+																										readln (clave);
+																										while clave <> 1968 do 
+																										begin
+																										writeln ('Su clave ha sido incorrecta, por favor intente nuevamente');
+																										readln (clave);
+																										end;
+																										
+																										
+																										if clave=1968 then
+																										begin
+																											clrscr;
+																											writeln ('');
+																											writeln ('    Cantidad de personas que han ingresado por linea');
+																											writeln ('');
+																											writeln ('    ________________________________________________');
+																											writeln ('   | Linea 1: 1        Linea 2: 0        Linea 3: 0 |');
+																											writeln ('   | Linea 4: 0        Linea 5: 0        Linea 6: 0 |');
+																											writeln ('   | Linea 7: 0        CLABETREN 8: 0               |');
+																											writeln ('   |________________________________________________|');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('');
+																											writeln ('    Cantidad de boletos utilizados');
+																											writeln ('');
+																											writeln ('       Boletos utilizados: 1');
+																											end;
+																										end;
+																										3:																									
+																										writeln ('Gracias por preferirnos, esperamos vuelva pronto');
+																										end;														
 																							end;
 end;
 end;
 end;
 end;
 end;
+
 end.
